@@ -126,7 +126,7 @@ p { margin: 0; }
 .plaque {
   position: relative;
   width: min(100%, 300px);
-  padding: 1.5rem 1rem 1.4rem;
+  padding: 1.15rem 1rem 1.1rem;
   background: var(--wine);
   display: flex;
   flex-direction: column;
@@ -135,7 +135,8 @@ p { margin: 0; }
 }
 .plaque::after { content: ""; position: absolute; inset: 7px; border: 1px solid rgba(198, 166, 107, 0.7); pointer-events: none; }
 .pl-day { font-family: var(--f-display); font-size: 1.7rem; color: var(--brass); }
-.pl-num { font-family: var(--f-kufi); font-weight: 600; font-size: 5rem; line-height: 1.1; color: var(--cream); font-variant-numeric: lining-nums; }
+.pl-num { font-family: var(--f-kufi); font-weight: 600; font-size: 5rem; line-height: 1; color: var(--cream); font-variant-numeric: lining-nums; }
+.pl-date { margin-top: 0.55rem; padding-top: 0.5rem; min-width: 62%; border-top: 1px solid var(--brass-soft); font-family: var(--f-kufi); font-size: 0.92rem; line-height: 1.2; letter-spacing: 0.12em; color: var(--cream-soft); font-variant-numeric: lining-nums; }
 .pl-mon { font-family: var(--f-kufi); font-size: 1.15rem; color: var(--cream); letter-spacing: 0.03em; }
 
 .when { display: flex; flex-direction: column; gap: 0.1rem; font-size: 1.4rem; line-height: 1.6; }
@@ -314,6 +315,7 @@ html.gate-on.is-open .rv { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) b
       <span class="pl-day">السبت</span>
       <span class="pl-num">28</span>
       <span class="pl-mon">تشرين الثاني 2026</span>
+      <span class="pl-date" dir="ltr">28/11/2026</span>
     </div>
 
     <p class="when rv" style="--i:6">
