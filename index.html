@@ -78,28 +78,18 @@ p { margin: 0; }
 .cap { display: block; width: 100%; height: auto; }
 .shaft {
   position: relative;
-  margin-inline: 5%;
-  padding: 0.6rem 9% 2.8rem;
+  margin: 2.6rem 5% 0;
+  padding: 3.4rem 9% 2.8rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1.5rem;
 }
-/* Side and base lines are drawn centred on the same x positions as the cap strokes
-   (5% and 8.5% of the arch width) and start 1px inside the cap, so the arch reads as one unbroken line. */
-.shaft::before, .shaft::after { content: ""; position: absolute; pointer-events: none; background-repeat: no-repeat; }
-.shaft::before {
-  inset: -1px -0.167% 0 -0.167%;
-  background-image: linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass)), linear-gradient(var(--brass), var(--brass));
-  background-size: 0.332% 100%, 0.332% 100%, 100% 1px;
-  background-position: left top, right top, left bottom;
-}
-.shaft::after {
-  inset: -1px 3.722% 7px 3.722%;
-  background-image: linear-gradient(var(--brass-soft), var(--brass-soft)), linear-gradient(var(--brass-soft), var(--brass-soft)), linear-gradient(var(--brass-soft), var(--brass-soft));
-  background-size: 0.3% 100%, 0.3% 100%, 100% 1px;
-  background-position: left top, right top, left bottom;
-}
+/* Rectangular double frame */
+.shaft::before, .shaft::after { content: ""; position: absolute; pointer-events: none; }
+.shaft::before { inset: 0; border: 1.5px solid var(--brass); }
+.shaft::after { inset: 7px; border: 1px solid var(--brass-soft); }
+.medal { position: absolute; z-index: 2; top: -40px; left: 50%; width: 80px; height: 80px; margin-left: -40px; filter: drop-shadow(0 3px 8px rgba(0, 0, 0, 0.45)); }
 .group { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; position: relative; }
 .bism { font-size: 1.1rem; color: var(--brass); }
 .host { font-size: 1.55rem; line-height: 1.6; color: var(--cream); }
@@ -278,12 +268,8 @@ html.gate-on.is-open .rv { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) b
 
 <main dir="rtl" lang="ar" class="wrap">
   <section class="arch" aria-label="نص الدعوة">
-    <svg class="cap" viewBox="0 0 400 230" aria-hidden="true" focusable="false">
-      <path d="M20 230 V190 C20 110 110 70 200 6 C290 70 380 110 380 190 V230" fill="none" stroke="#c6a66b" stroke-width="1.2"/>
-      <path d="M34 230 V192 C34 120 118 84 200 26 C282 84 366 120 366 192 V230" fill="none" stroke="#c6a66b" stroke-opacity=".5" stroke-width="1"/>
-      <g transform="translate(142.5 74.6) scale(1.15)"><use href="#khatam" class="star" width="100" height="100"/><use href="#crown" class="crown" x="30" y="37.2" width="40" height="30.7"/></g>
-    </svg>
     <div class="shaft">
+      <svg class="medal" viewBox="0 0 100 100" aria-hidden="true" focusable="false"><use href="#khatam" class="star" width="100" height="100"/><use href="#crown" class="crown" x="30" y="37.2" width="40" height="30.7"/></svg>
       <p class="bism rv" style="--i:0">بسم الله الرحمن الرحيم</p>
 
       <p class="verse rv" style="--i:1">وَمِنْ آيَاتِهِ أَنْ خَلَقَ لَكُم مِّنْ أَنفُسِكُمْ أَزْوَاجًا لِّتَسْكُنُوا إِلَيْهَا وَجَعَلَ بَيْنَكُم مَّوَدَّةً وَرَحْمَةً</p>
