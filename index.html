@@ -129,6 +129,10 @@ p { margin: 0; }
 .pl-date { margin-top: 0.55rem; padding-top: 0.5rem; min-width: 62%; border-top: 1px solid var(--brass-soft); font-family: var(--f-kufi); font-size: 0.92rem; line-height: 1.2; letter-spacing: 0.12em; color: var(--cream-soft); font-variant-numeric: lining-nums; }
 .pl-mon { font-family: var(--f-kufi); font-size: 1.15rem; color: var(--cream); letter-spacing: 0.03em; }
 
+.zaffa { display: flex; flex-direction: column; align-items: center; gap: 0.1rem; font-size: 1.4rem; line-height: 1.6; padding: 0.9rem 1.6rem; border-block: 1px solid var(--brass-soft); }
+.zaffa b { font-weight: 700; color: var(--brass); font-family: var(--f-kufi); font-size: 1.25rem; letter-spacing: 0.02em; }
+.zf-label { font-family: var(--f-display); font-size: 1.5rem; color: var(--brass); }
+.zf-from { font-size: 1.15rem; color: var(--cream-soft); }
 .when { display: flex; flex-direction: column; gap: 0.1rem; font-size: 1.4rem; line-height: 1.6; }
 .when b { font-weight: 700; color: var(--brass); font-family: var(--f-kufi); font-size: 1.25rem; letter-spacing: 0.02em; }
 .where { display: flex; flex-direction: column; gap: 0.1rem; }
@@ -304,31 +308,37 @@ html.gate-on.is-open .rv { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) b
       <span class="pl-date" dir="ltr">28/11/2026</span>
     </div>
 
-    <p class="when rv" style="--i:6">
+    <div class="zaffa rv" style="--i:6">
+      <span class="zf-label">زفة العريس</span>
+      <p>الساعة <b>4:00</b> عصراً</p>
+      <p class="zf-from">من باب بيت العريس</p>
+    </div>
+
+    <p class="when rv" style="--i:7">
       <span>من الساعة <b>5:30</b> مساءً</span>
       <span>حتى الساعة <b>8:00</b> مساءً</span>
     </p>
 
-    <div class="where rv" style="--i:7">
+    <div class="where rv" style="--i:8">
       <p class="venue">قصر تريو للاحتفالات</p>
       <p class="hall">قاعة 2</p>
       <p class="street">عمّان، شارع وصفي التل</p>
     </div>
 
-    <div class="actions rv" style="--i:8">
-      <a class="btn btn-primary" href="https://maps.app.goo.gl/2NYhxvBBCjdXtcm76" target="_blank" rel="noopener">الموقع على الخريطة</a>
-      <a class="btn" id="cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;dates=20261128T143000Z/20261128T170000Z&amp;text=%D8%AD%D9%81%D9%84%20%D8%B2%D9%81%D8%A7%D9%81" target="_blank" rel="noopener">أضف إلى التقويم</a>
+    <div class="actions rv" style="--i:9">
+      <a class="btn btn-primary" href="https://maps.app.goo.gl/2NYhxvBBCjdXtcm76" target="_blank" rel="noopener">موقع الصالة</a>
+      <a class="btn" href="https://maps.app.goo.gl/mYjDXzQrdkHCpNjy8" target="_blank" rel="noopener">عنوان بيت العريس</a>
     </div>
 
-    <p class="note rv" style="--i:9">
+    <p class="note rv" style="--i:10">
       يرجى عدم اصطحاب الأطفال
       <small>شاكرين لكم تفهمكم وحسن تعاونكم</small>
     </p>
 
-    <p class="count rv" id="count" style="--i:10" hidden></p>
+    <p class="count rv" id="count" style="--i:11" hidden></p>
   </section>
 
-  <footer class="foot rv" style="--i:11">
+  <footer class="foot rv" style="--i:12">
     <svg viewBox="0 0 100 100" class="star" aria-hidden="true"><use href="#khatam"/></svg>
     <p>نسعد بحضوركم ومشاركتنا فرحتنا</p>
   </footer>
@@ -340,19 +350,6 @@ html.gate-on.is-open .rv { animation: rise 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) b
   var gate = document.getElementById('gate');
   var btn = document.getElementById('open');
   var skip = /[?&]nogate/.test(location.search);
-
-  /* Calendar link: title, place and time in Amman (UTC+3) */
-  try {
-    var cal = document.getElementById('cal');
-    var q = [
-      'action=TEMPLATE',
-      'text=' + encodeURIComponent('حفل زفاف م. المعتصم بالله رمان'),
-      'dates=20261128T143000Z/20261128T170000Z',
-      'location=' + encodeURIComponent('قصر تريو للاحتفالات، قاعة 2، شارع وصفي التل، عمّان'),
-      'details=' + encodeURIComponent('الموقع: https://maps.app.goo.gl/2NYhxvBBCjdXtcm76')
-    ];
-    cal.href = 'https://calendar.google.com/calendar/render?' + q.join('&');
-  } catch (e) {}
 
   /* Days left */
   try {
